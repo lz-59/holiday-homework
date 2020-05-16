@@ -24,7 +24,8 @@ class extends Component {
       if (!err) {
         login(qs.stringify(values)).then(res => {
           if(res.data.status*1 === 200){
-            success(res.data.message)
+            success(res.data.message)         
+            this.props.history.push('/home')
           }else{
             error(res.data.message)
           }
