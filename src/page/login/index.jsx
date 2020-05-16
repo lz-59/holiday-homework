@@ -16,6 +16,7 @@ const error = (val) => {
 }
 
 export default @Form.create()
+
 class extends Component {
   handleSubmit = e => {
     e.preventDefault();
