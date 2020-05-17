@@ -4,7 +4,7 @@ import './styles.less'
 export default class Froms extends Component {
   render() {
     return (
-      <div>
+      <div className="from-box">
         
       </div>
     )
