@@ -21,7 +21,8 @@ class Froms extends Component {
       if (!err) {
         add(qs.stringify(values)).then(res => {
           if(res.data.status*1 === 200) {
-            success(res.data.info) 
+            this.props.form.resetFields()
+            success(res.data.info)
           }else {
             error(res.data.info)
           }

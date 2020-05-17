@@ -1,8 +1,27 @@
 import React, { Component } from 'react'
-import { Icon, Input } from 'antd'
+import { Icon, Input, message } from 'antd'
+import { withRouter } from 'react-router-dom'
 import './styles.less'
 
-export default class Header extends Component {
+const success = (val) => {
+  message.success(val);
+}
+
+const error = (val) => {
+  message.error(val);
+}
+
+export default @withRouter
+class Header extends Component {
+
+  onSearch = (val) => {
+    if(this.props.location.pathname ==='/home/table'){
+      success('功能暂未实现')
+    }else{
+      error('请到Table页面进行搜索')
+    }
+  }
+
   render() {
     const { userName } = this.props
     return (
@@ -14,7 +33,7 @@ export default class Header extends Component {
         <div>
           <Input.Search
              placeholder="Search"
-             onSearch={value => console.log(value)}
+             onSearch={value => this.onSearch(value)}
              style={{ width: 200 }}
           />
         </div>

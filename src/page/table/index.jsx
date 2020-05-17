@@ -37,6 +37,9 @@ class Tables extends Component {
       }
     })
   }
+  tz = () => {
+    this.props.history.push('/home/form')
+  }
   render() {
     const columns = [
       {
@@ -75,8 +78,7 @@ class Tables extends Component {
         key: 'hospital',
       },
       {
-        title: 'Action',
-        key: 'action',
+        title: '',
         render: (i) => (
           <span>
             <b>Edit</b>
@@ -94,7 +96,7 @@ class Tables extends Component {
           <div className="tab-hed">
             Add class 
             <span>.table-string</span>
-            <Button type="primary">Add user</Button>
+            <Button type="primary" onClick={this.tz}>Add user</Button>
           </div>        
             <Table 
               rowKey={v => v.id}
