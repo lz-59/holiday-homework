@@ -58,9 +58,9 @@ class Tables extends Component {
         key: 'action',
         render: () => (
           <span>
-            <a>Edit</a>
+            <b>Edit</b>
             <Divider type="vertical" />
-            <a>Delete</a>
+            <b>Delete</b>
           </span>
         ),
       },
@@ -76,7 +76,7 @@ class Tables extends Component {
             <Button type="primary">Add user</Button>
           </div>        
             <Table 
-              rowKey={v => v.id} 
+              rowKey={v => v.id}
               columns={columns} 
               dataSource={data} 
               pagination={ false } 
