@@ -1,14 +1,24 @@
 import React, { Component } from 'react'
-import { Button, Table, Divider, Progress } from 'antd'
+import { Button, Table, Divider, Progress, message } from 'antd'
 import { connect } from 'react-redux'
+import qs from 'qs'
 import { firstData, del } from '@/api'
-import { defaultData } from '@/actions/table'
+import { defaultData, delData } from '@/actions/table'
 import './styles.less'
+
+const success = (val) => {
+  message.success(val);
+}
+
+const error = (val) => {
+  message.error(val);
+}
 
 export default @connect(state => ({
   data: state.table.data,
 }),{
   defaultData,
+  delData,
 })
 class Tables extends Component {
   componentDidMount () {
@@ -17,7 +27,15 @@ class Tables extends Component {
     })
   }
   del = (id) => {
-    
+    this.props.delData(id)
+    del(qs.stringify({id})).then(res => {
+      if(res.data.status*1 === 200){
+        success(res.data.info)
+        this.props.delData(id)
+      }else {
+        error(res.data.info)
+      }
+    })
   }
   render() {
     const columns = [
