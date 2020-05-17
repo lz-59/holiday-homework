@@ -20,6 +20,10 @@ export const add = (obj) => {//添加
   return request.post('/api/index.php/home/v5/add',obj)
 }
 
+export const del = (obj) => {//删除
+  return request.post('/api/index.php/home/v5/deleteUser',obj)
+}
+
 export const query = (str) => {//查询
   return request.get(`/api/index.php/home/v5/findUser?keyword=${str}`)
 }

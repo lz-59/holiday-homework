@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Table, Divider, Progress } from 'antd'
 import { connect } from 'react-redux'
-import { firstData } from '@/api'
+import { firstData, del } from '@/api'
 import { defaultData } from '@/actions/table'
 import './styles.less'
 
@@ -15,6 +15,9 @@ class Tables extends Component {
     firstData().then(res => {
       this.props.defaultData(res.data)
     })
+  }
+  del = (id) => {
+    
   }
   render() {
     const columns = [
@@ -56,11 +59,11 @@ class Tables extends Component {
       {
         title: 'Action',
         key: 'action',
-        render: () => (
+        render: (i) => (
           <span>
             <b>Edit</b>
             <Divider type="vertical" />
-            <b>Delete</b>
+            <b onClick={() => this.del(i.id)}>Delete</b>
           </span>
         ),
       },
