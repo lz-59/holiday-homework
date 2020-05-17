@@ -19,7 +19,6 @@ class Froms extends Component {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        console.log(values);
         add(qs.stringify(values)).then(res => {
           if(res.data.status*1 === 200) {
             success(res.data.info) 

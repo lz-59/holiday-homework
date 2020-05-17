@@ -17,4 +17,12 @@ module.exports = function(app) {
       }
     })
   )
+  app.use(createProxyMiddleware('/apk',{
+      target: 'https://blog.zdldove.top',
+      changeOrigin: true,
+      pathRewrite: {
+        '^/apk': ''
+      }
+    })
+  )
 }
