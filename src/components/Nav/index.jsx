@@ -10,7 +10,7 @@ export default class Nav extends Component {
         <Menu
           onClick={this.handleClick}
           style={{ width: 256 }}
-          defaultSelectedKeys={['1']}
+          defaultSelectedKeys={['5']}
           defaultOpenKeys={['sub1']}
           mode="inline"
         >
@@ -39,7 +39,7 @@ export default class Nav extends Component {
             </NavLink>
           </Menu.Item>
           <Menu.Item key="5">
-            <NavLink to="/home">
+            <NavLink to="/home/chart">
             <Icon type="radar-chart" />
             <span>Chart</span>
             </NavLink>

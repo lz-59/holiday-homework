@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux';
+import { Switch, Route, Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
 import { Header, Nav } from '@@'
+import Chart from '@/page/chart'
 import './styles.less'
 
 export default @connect(state => ({
@@ -23,6 +25,10 @@ class Home extends Component {
         <Header userName={userName} />
         <div className="home-se">
           <Nav/>
+          <Switch>
+            <Route path="/home/chart" component={Chart}/>
+            <Redirect to="/home/chart"/>
+          </Switch>
         </div>
       </div>
     )
