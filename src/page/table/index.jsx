@@ -4,8 +4,10 @@ import './styles.less'
 export default class Table extends Component {
   render() {
     return (
-      <div>
-        
+      <div className="tab-box">
+        <div>
+          
+        </div>
       </div>
     )
   }
