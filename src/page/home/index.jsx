@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { Header } from '@@'
+import { Header, Nav } from '@@'
 import './styles.less'
 
 export default @connect(state => ({
@@ -21,6 +21,9 @@ class Home extends Component {
     return (
       <div className="home-box">
         <Header userName={userName} />
+        <div className="home-se">
+          <Nav/>
+        </div>
       </div>
     )
   }
