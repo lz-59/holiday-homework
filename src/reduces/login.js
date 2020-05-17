@@ -1,9 +1,16 @@
+import { BASIC } from '@/constants/actionTypes'
+import _ from 'loadsh'
 const stateDefault = {
-  username: '',
+  userName: '',
+  userId: '',
 }
 
 export default function login (state = stateDefault, action) {
-  switch (action.payload) {
+  switch (action.type) {
+    case BASIC:
+      state.userId = _.cloneDeep(action.payload.user_id)
+      state.userName = _.cloneDeep(action.payload.user_name)
+      return {...state}
     default:
       return state
   }

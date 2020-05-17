@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { Form, Input, Button, message } from 'antd';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { login } from '@/api'
+import { basicData } from '@/actions/login'
 import qs from 'qs'
 import './styles.less'
 
@@ -14,8 +16,12 @@ const success = (val) => {
 const error = (val) => {
   message.error(val);
 }
+export default @connect(state => ({
 
-export default @Form.create()
+}),{
+  basicData,
+})
+@Form.create()
 
 class extends Component {
   handleSubmit = e => {
@@ -26,6 +32,7 @@ class extends Component {
           if(res.data.status*1 === 200){
             success(res.data.message)         
             this.props.history.push('/home')
+            this.props.basicData(res.data.data)
           }else{
             error(res.data.message)
           }
