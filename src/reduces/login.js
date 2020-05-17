@@ -10,7 +10,7 @@ export default function login (state = stateDefault, action) {
     case BASIC:
       state.userId = _.cloneDeep(action.payload.user_id)
       state.userName = _.cloneDeep(action.payload.user_name)
-      return {...state}
+      return {...state, userId: state.userId, userName: state.userName}
     default:
       return state
   }
