@@ -33,7 +33,7 @@ export default class Nav extends Component {
             </NavLink>
           </Menu.Item>
           <Menu.Item key="4">
-            <NavLink to="/home">
+            <NavLink to="/home/form">
             <Icon type="info-circle" />
             <span>Form Elements</span>
             </NavLink>
@@ -45,13 +45,13 @@ export default class Nav extends Component {
             </NavLink>
           </Menu.Item>
           <Menu.Item key="6">
-            <NavLink to="/home">
+            <NavLink to="/home/table">
             <Icon type="heat-map" />
             <span>Table</span>
             </NavLink>
           </Menu.Item>
           <Menu.Item key="7">
-            <NavLink to="/home">
+            <NavLink to="/home/sample">
             <Icon type="box-plot" />
             <span>Sample Pages</span>
             </NavLink>
