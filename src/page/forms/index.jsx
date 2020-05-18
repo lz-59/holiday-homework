@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Input, Button, message } from 'antd';
+import { Form, Input, Button, Upload, message, Icon } from 'antd';
 import { add } from '@/api'
 import qs from 'qs'
 import './styles.less'
@@ -15,10 +15,13 @@ const error = (val) => {
 export default @Form.create()
 
 class Froms extends Component {
+ 
+  
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
+        values.gender = values.gender[0].response.thumbUrl
         add(qs.stringify(values)).then(res => {
           if(res.data.status*1 === 200) {
             this.props.form.resetFields()
@@ -28,8 +31,22 @@ class Froms extends Component {
           }
         })
       }
-    });
+    })
   }
+
+  onBeforeUpload = ({ type }) => {
+    if (type !== 'image/png') {
+      message.warning('格式不对')
+      return false
+    }
+  }
+
+  normFile = e => {
+    if (e.file.type !== 'image/png') return false
+    if (Array.isArray(e)) return e
+    return e && e.fileList
+  }
+
   render() {
     const { getFieldDecorator } = this.props.form
     const formItemLayout = {
@@ -91,11 +108,20 @@ class Froms extends Component {
             <h3>Gender</h3>
             <Form.Item>
               {getFieldDecorator('gender', {
-                rules: [{ required: true, message: 'Please input your Gender!' }],
+                valuePropName: 'fileList',
+                getValueFromEvent: this.normFile,
+                rules: [{ required: true, message: 'Please input your Upload image!' }],
               })(
-                <Input
-                  placeholder="Gender"
-                />,
+                <Upload
+                  name="logo" 
+                  action="https://www.mocky.io/v2/5cc8019d300000980a055e76" 
+                  listType="picture"
+                  beforeUpload={this.onBeforeUpload}
+                >
+                  <Button>
+                    <Icon type="upload" /> Click to upload
+                  </Button>
+                </Upload>
               )}
             </Form.Item>
             <Form.Item>
