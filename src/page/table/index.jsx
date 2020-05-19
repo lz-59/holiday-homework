@@ -44,6 +44,7 @@ class Tables extends Component {
     const columns = [
       {
         title: 'User',
+        dataIndex: '',
         render: () => <p className="tab-tx"></p>,
       },
       {
